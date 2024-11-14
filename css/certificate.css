@@ -1,0 +1,50 @@
+body{
+  background-image: url(/images/bg.jpg);
+}
+
+@keyframes fadeInScale { 
+  0%{
+      opacity: 1;
+      transform: scale(0.9);
+  }
+
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+#container {
+        
+        width: 800px;
+        height: 600px;
+        padding: 10px;
+        text-align: center;
+      }
+      #certificate {
+        animation: fadeInScale 1s ease-in-out;
+        margin: auto;
+        width: 600px;
+        height: 350px;
+        padding: 10px;
+        text-align: center;
+        /* margin-left: 400px; */
+        margin-top: 80px;
+        border: 10px solid rgb(210, 105, 30);
+        background-color: rgb(246, 248, 246);
+        color: chocolate;
+        border-radius: 5px ;
+      }
+      h1 {
+        margin-left: 170px;
+        color: #92a5de;
+        font: bold 40px Sans-Serif;
+      }
+      input[type="submit"] {
+        margin-left: 200px;
+        background-color: lightblue;
+        height: 30px;
+        padding: 5px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px grey;
+      }

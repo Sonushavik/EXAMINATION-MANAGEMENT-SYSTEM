@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Examination</title>
+        <style>
+            body{
+                background-image: url(/images/bg.jpg);
+            }
+            .exam-container {
+                width: 80%;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            }
+    
+            .exam-container h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 2em;
+                color: #333;
+            }
+    
+            .question-container {
+                margin-top: 30px;
+            }
+    
+            .question-container h3 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+    
+            .options {
+                list-style-type: none;
+                padding: 0;
+            }
+    
+            .options li {
+                margin-bottom: 10px;
+            }
+    
+            .options li input[type="radio"] {
+                margin-right: 10px;
+            }
+    
+            .submit-btn {
+                margin-top: 20px;
+                padding: 15px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                cursor: pointer;
+                display: block;
+                width: 100%;
+                transition: background-color 0.3s;
+            }
+    
+            .submit-btn:hover {
+                background-color: #218838;
+            }
+    
+            .result-container {
+                margin-top: 30px;
+                text-align: center;
+            }
+    
+            .result-container h3 {
+                font-size: 2em;
+                color: #28a745;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="exam-container">
+            <h2>Welcome to Your Exam</h2>
+            <div class="question-container">
+                <!-- question 1 -->
+                <div id="question1" class="question">
+                    <h3>Question 1: What is HTML?</h3>
+                    <ul class="options">
+                        <li><label><input type="radio" name="q1" value="A">HyperText Markup Language</label></li>
+                        <li><label><input type="radio" name="q1" value="B"> HyperTool Markup Language</label></li>
+                        <li><label><input type="radio" name="q1" value="C"> HomeText Markup Language</label></li>
+                        <li><label><input type="radio" name="q1" value="D"> HyperText Markdown Language</label></li>
+                    </ul>
+
+                </div>
+
+                <!-- Question 2 -->
+                <div id="question2" class="question">
+                    <h3>Question 2: What does CSS stand for?</h3>
+                    <ul class="options">
+                        <li><label><input type="radio" name="q2" value="A"> Computer Style Sheets</label></li>
+                        <li><label><input type="radio" name="q2" value="B"> Cascading Style Sheets</label></li>
+                        <li><label><input type="radio" name="q2" value="C"> Creative Style Sheets</label></li>
+                        <li><label><input type="radio" name="q2" value="D"> Colorful Style Sheets</label></li>
+                    </ul>
+                </div>
+
+                <!-- Question 3 -->
+                <div id="question3" class="question">
+                    <h3>Question 3: Which JavaScript framework is maintained by Facebook?</h3>
+                    <ul class="options">
+                        <li><label><input type="radio" name="q3" value="A"> Angular</label></li>
+                        <li><label><input type="radio" name="q3" value="B"> Vue.js</label></li>
+                        <li><label><input type="radio" name="q3" value="C"> Ember.js</label></li>
+                        <li><label><input type="radio" name="q3" value="D"> React</label></li>
+                    </ul>
+                </div>
+
+                <button class="submit-btn" onclick="SubmitExam()"> Submit Exam</button>
+            </div>
+
+            <!-- Result section -->
+             <div id="resultContainer" class="result-container" style="display: none;">
+                <h3 id="resultText"></h3>
+                <button class="submit-btn" onclick="restartExam()">Take Exam Again</button>
+
+             </div>
+        </div>
+
+        <script>
+            const correctAnswers = {
+                q1: 'A',
+                q2: 'B',
+                q3: 'D'
+            };
+
+            function SubmitExam(){
+                let score = 0;
+                let totalQuestions = Object.keys(correctAnswers).length;
+
+                //check answers
+                for(let question in correctAnswers){
+                    let selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                    if(selectedOption && selectedOption.value === correctAnswers[question]){
+                        score++;
+                    }
+                }
+
+                // show result
+                document.getElementById('resultText').innerText=`you scored ${score} out of ${totalQuestions}`;
+                document.getElementById('resultContainer').style.display='block';
+                document.querySelector('.question-container').style.display = 'none';
+            }
+
+            function restartExam() {
+            // Reset form and UI
+            document.querySelector('.question-container').style.display = 'block';
+            document.getElementById('resultContainer').style.display = 'none';
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+        }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>User Login</h2>
+            <form id="loginForm">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+
+        </div>
+        
+        <script>
+            // Handle login form submission
+            document.getElementById('loginForm').addEventListener('submit', function(event){
+                event.preventDefault();
+
+                //Capture login data
+                const email=document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                // Retrieve user data from localStorage
+
+                const user = JSON.parse(localStorage.getItem('user'));
+
+                // Validate credentials
+                if (user && user.email === email && user.password === password){
+                    alert('Login successful ! Redirecting to the exam page');
+                    window.location.href = 'exam.html';
+                }
+                else{
+                    alert('Invaild email or password. Please try again');
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Examination Section</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/form.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <h2>Register for a Course</h2>
+            <form id="registrationForm">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="course">Select Course</label>
+                <select id="course" name="course" required>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="ReactJS">ReactJS</option>
+                    <option value="Angular">Angular</option>
+                </select>
+                <button type="submit">Register</button>
+                <hr>
+                <a href="login.html">Login</a>
+            </form>
+        </div>
+        
+        <script>
+
+             // Handle form submission
+            document.getElementById('registrationForm').addEventListener('submit', function(event){
+                event.preventDefault();
+                 // Capture the form data
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const course = document.getElementById('course').value;
+
+                // Save user data (In a real app, you would send this data to a server)
+                localStorage.setItem('user', JSON.stringify({fullName, email, password, course}));
+
+                alert('Registration Successfully! Please login.')
+                window.location.href = 'login.html';
+
+            });
+        </script>
+    </body>
+</html>
